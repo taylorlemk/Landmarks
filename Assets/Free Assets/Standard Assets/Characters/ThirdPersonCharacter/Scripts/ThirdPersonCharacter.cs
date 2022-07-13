@@ -10,7 +10,7 @@ namespace UnityStandardAssets.Characters.ThirdPerson
 		[SerializeField] float m_MovingTurnSpeed = 360;
 		[SerializeField] float m_StationaryTurnSpeed = 180;
 		[SerializeField] float m_JumpPower = 12f;
-		[Range(1f, 4f)] [SerializeField] float m_GravityMultiplier = 2f;
+		[Range(1f, 4f)][SerializeField] float m_GravityMultiplier = 2f;
 		[SerializeField] float m_RunCycleLegOffset = 0.2f; //specific to the character in sample assets, will need to be modified to work with others
 		[SerializeField] float m_MoveSpeedMultiplier = 1f;
 		[SerializeField] float m_AnimSpeedMultiplier = 1f;
@@ -28,9 +28,6 @@ namespace UnityStandardAssets.Characters.ThirdPerson
 		Vector3 m_CapsuleCenter;
 		CapsuleCollider m_Capsule;
 		bool m_Crouching;
-
-		// Added by MJS to allow freezing thirdPerson character and animator
-		public bool immobilized = false;
 
 
 		void Start()
@@ -56,18 +53,8 @@ namespace UnityStandardAssets.Characters.ThirdPerson
 			move = transform.InverseTransformDirection(move);
 			CheckGroundStatus();
 			move = Vector3.ProjectOnPlane(move, m_GroundNormal);
-
-			// if loop added by MJS
-			if (immobilized)
-			{
-				m_TurnAmount = 0;
-				m_ForwardAmount = 0;
-			}
-			else
-			{
-				m_TurnAmount = Mathf.Atan2(move.x, move.z);
-				m_ForwardAmount = move.z;
-			}
+			m_TurnAmount = Mathf.Atan2(move.x, move.z);
+			m_ForwardAmount = move.z;
 
 			ApplyExtraTurnRotation();
 
