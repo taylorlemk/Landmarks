@@ -32,6 +32,7 @@ public class LM_PermutedList : ExperimentTask
 
     //[HideInInspector]
     public List<List<GameObject>> permutedList = new List<List<GameObject>>();
+    
 
 
     public override void startTask()
@@ -54,6 +55,8 @@ public class LM_PermutedList : ExperimentTask
         {
             FisherYatesShuffle(permutedList);
         }
+
+        //outputSubsetObjectLists = new GameObject[subset];
 
         for (int i = 0; i < subset; i++)
         {

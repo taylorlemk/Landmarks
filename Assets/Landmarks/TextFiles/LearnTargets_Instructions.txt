@@ -1,9 +1,6 @@
 ﻿
-Identifying Targets
-
-This experiment involves navigation to and/or memory for specific targets
-in the virtual environment. You will now view each target destination, so 
-you can better recognize them during the task(s). Please speak the name 
-of each target as it appears.
+You will now see a summary of the 6 target objects that you will be required
+to learn the locations of in the virtual supermarket. You will later be asked to 
+navigate to each target object from various positions in the supermarket. 
 
 Press "Continue" to begin.
