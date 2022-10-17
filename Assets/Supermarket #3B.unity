@@ -42369,7 +42369,7 @@ MonoBehaviour:
   skipConditions: []
   tasks: []
   objectsList: []
-  repeat: 8
+  repeat: 1
   overideRepeat: {fileID: 0}
   repeatCount: 1
   hideTargetsDuringTask: 0
@@ -42561,15 +42561,15 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6282820247082300396}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -0.043, y: 0.479, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 6285644290681549074}
   - {fileID: 6279316239532853948}
   - {fileID: 6285781053990486808}
-  m_Father: {fileID: 1282310037}
-  m_RootOrder: 1
+  m_Father: {fileID: 0}
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &6279547127184010676
 Transform:
@@ -42991,49 +42991,6 @@ MonoBehaviour:
   SecondsUntilAssist: -1
   compassPosOffset: {x: 0, y: 0, z: -2.8}
   compassRotOffset: {x: 0, y: 0, z: 0}
---- !u!114 &8372334597954591475
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8475901026018498683}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7a143aa6c55cc4ba9b524fdac40b25f7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  skip: 0
-  canIncrementLists: 0
-  interval: 0
-  interruptTasks: {fileID: 0}
-  interruptInterval: 0
-  repeatInterrupts: 9999
-  currentInterrupt: 0
-  pausedTasks: {fileID: 0}
-  parentTask: {fileID: 0}
-  firstPersonCamera: {fileID: 0}
-  overheadCamera: {fileID: 0}
-  debugButton: {fileID: 0}
-  actionButton: {fileID: 0}
-  vrEnabled: 0
-  triggerLabel: 
-  triggerOnStart: 0
-  triggerOnEnd: 0
-  destinations: {fileID: 0}
-  NavigationInstruction: {fileID: 0}
-  distanceAllotted: Infinity
-  timeAllotted: 10
-  scoreIncrement: 50
-  penaltyRate: 2000
-  showScoring: 0
-  hideTargetOnStart: 0
-  showTargetAfterSeconds: 0
-  hideNonTargets: 0
-  assistCompass: {fileID: 3717135628363972916}
-  SecondsUntilAssist: -1
-  compassPosOffset: {x: 0, y: 0, z: -2.8}
-  compassRotOffset: {x: 0, y: 0, z: 0}
 --- !u!33 &8415277125944497297
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -43068,7 +43025,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8482316417034223261}
-  - component: {fileID: 8372334597954591475}
+  - component: {fileID: 8475901026018498684}
   m_Layer: 0
   m_Name: Navigate
   m_TagString: Untagged
@@ -43076,6 +43033,49 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &8475901026018498684
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8475901026018498683}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 21e6dd4beda7d42e8a35933ccdb78ab6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  skip: 0
+  canIncrementLists: 1
+  interval: 0
+  interruptTasks: {fileID: 0}
+  interruptInterval: 0
+  repeatInterrupts: 9999
+  currentInterrupt: 0
+  pausedTasks: {fileID: 0}
+  parentTask: {fileID: 0}
+  firstPersonCamera: {fileID: 0}
+  overheadCamera: {fileID: 0}
+  debugButton: {fileID: 0}
+  actionButton: {fileID: 0}
+  vrEnabled: 0
+  triggerLabel: 
+  triggerOnStart: 0
+  triggerOnEnd: 0
+  destinations: {fileID: 0}
+  NavigationInstruction: {fileID: 0}
+  distanceAllotted: Infinity
+  timeAllotted: 10
+  scoreIncrement: 50
+  penaltyRate: 2000
+  showScoring: 0
+  hideTargetOnStart: 0
+  showTargetAfterSeconds: 0
+  hideNonTargets: 0
+  assistCompass: {fileID: 0}
+  SecondsUntilAssist: Infinity
+  compassPosOffset: {x: 0, y: 0, z: 0}
+  compassRotOffset: {x: 0, y: 0, z: 0}
 --- !u!114 &8475965484860486574
 MonoBehaviour:
   m_ObjectHideFlags: 0
