@@ -15,6 +15,8 @@ public class avatarLog : MonoBehaviour {
 	public GameObject player;
 	public GameObject camerarig;
 
+	private string Location;
+
 	void Start () {
 
 		cameraCon =player.transform as Transform;
@@ -24,10 +26,26 @@ public class avatarLog : MonoBehaviour {
 		manager = experiment.GetComponent("Experiment") as Experiment;
 		log = manager.dblog;
 		avatar = transform;
+		Location="Test";
 	}
 	
 	// Update is called once per frame
 	void FixedUpdate () {
+
+		// Checking which target object/hallway colliders the player is in
+		void OnCollisionEnter(Collision other) 
+		{ 
+			if (other.gameObject.tag =="LocationColliders") 
+			{
+				Location = other.gameObject.name;
+			}
+			else 
+			{
+				Location ="N/A";
+			}
+			
+		}
+
 
         // Log the name of the tracked object, it's body position, body rotation, and camera (head) rotation
 		if (navLog){
@@ -35,7 +53,7 @@ public class avatarLog : MonoBehaviour {
             log.log("Avatar: \t" + avatar.name + "\t" +
                     "Position (xyz): \t" + cameraCon.position.x + "\t" + cameraCon.position.y + "\t" + cameraCon.position.z + "\t" +
                     "Rotation (xyz): \t" + cameraCon.eulerAngles.x + "\t" + cameraCon.eulerAngles.y + "\t" + cameraCon.eulerAngles.z + "\t" +
-                    "Camera   (xyz): \t" + cameraRig.eulerAngles.x + "\t" + cameraRig.eulerAngles.y + "\t" + cameraRig.eulerAngles.z + "\t"
+                    "Camera   (xyz): \t" + cameraRig.eulerAngles.x + "\t" + cameraRig.eulerAngles.y + "\t" + cameraRig.eulerAngles.z + "\t" + "Location (Object/Hallway): \t" + Location + "\t"
                     , 1);
         }
 	}
