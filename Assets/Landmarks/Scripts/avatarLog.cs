@@ -15,7 +15,9 @@ public class avatarLog : MonoBehaviour {
 	public GameObject player;
 	public GameObject camerarig;
 
-	private string Location;
+	private string location = "Nowhere";
+	private string previousLocation = "Nowhere";
+	private string KeyPress;
 
 	void Start () {
 
@@ -26,24 +28,34 @@ public class avatarLog : MonoBehaviour {
 		manager = experiment.GetComponent("Experiment") as Experiment;
 		log = manager.dblog;
 		avatar = transform;
-		Location="Test";
+		
 	}
-	
-	// Update is called once per frame
-	void FixedUpdate () {
 
-		// Checking which target object/hallway colliders the player is in
-		void OnCollisionEnter(Collision other) 
-		{ 
-			if (other.gameObject.tag =="LocationColliders") 
-			{
-				Location = other.gameObject.name;
-			}
-			else 
-			{
-				Location ="N/A";
-			}
-			
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Alpha0))
+        {
+			Debug.Log("Someone is trying to erase us from space-time!");
+			location = "Nowhere";
+        }
+
+        if (previousLocation != location)
+        {
+			Debug.Log("We have left " + previousLocation + ". Now entering " + location);
+        }
+
+    }
+
+    // Update is called once per frame
+    void FixedUpdate () {
+		// Checking if player pressed button 
+		if (Input.GetKey(KeyCode.Space))
+		{
+			KeyPress= "True";
+		}
+		else
+		{
+			KeyPress= "False";
 		}
 
 
@@ -53,8 +65,44 @@ public class avatarLog : MonoBehaviour {
             log.log("Avatar: \t" + avatar.name + "\t" +
                     "Position (xyz): \t" + cameraCon.position.x + "\t" + cameraCon.position.y + "\t" + cameraCon.position.z + "\t" +
                     "Rotation (xyz): \t" + cameraCon.eulerAngles.x + "\t" + cameraCon.eulerAngles.y + "\t" + cameraCon.eulerAngles.z + "\t" +
-                    "Camera   (xyz): \t" + cameraRig.eulerAngles.x + "\t" + cameraRig.eulerAngles.y + "\t" + cameraRig.eulerAngles.z + "\t" + "Location (Object/Hallway): \t" + Location + "\t"
+                    "Camera   (xyz): \t" + cameraRig.eulerAngles.x + "\t" + cameraRig.eulerAngles.y + "\t" + cameraRig.eulerAngles.z + "\t" + "Location (Object/Hallway): \t" + location + "\t" + "Keypress(True/False): \t" + KeyPress + "\t"
                     , 1);
         }
 	}
+
+    
+    void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.tag == "LocationColliders")
+        {
+            location = other.gameObject.name;
+            Debug.Log("COLLIDER IS TRIGGERING!!!!");
+        }
+    }
+
+    private void OnTriggerStay(Collider other)
+    {
+        if (other.gameObject.tag == "LocationColliders")
+        {
+			if (location == "Nowhere")
+			{
+				location = other.gameObject.name;
+				Debug.LogWarning("Fixing an error in current location assignment; everything is okay!");
+			}
+			Debug.Log("STILL at " + other.name);
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+	{
+		if (other.gameObject.tag == "LocationColliders")
+		{
+
+			location = "Nowhere";
+			previousLocation = other.gameObject.name;
+			Debug.Log("COLLIDER IS TRIGGERING!!!!");
+		}
+	}
+
+
 }

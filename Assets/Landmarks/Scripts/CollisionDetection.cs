@@ -26,7 +26,11 @@ public class CollisionDetection : MonoBehaviour {
 	void OnControllerColliderHit(ControllerColliderHit hit)  {
 		if(hit.gameObject.tag == "Target") {
 			manager.OnControllerColliderHit(hit.gameObject);
-		}   
+		}
+        else if (hit.gameObject.tag == "LocationColliders")
+        {
+            Debug.Log("CONTROLLER COLLIDER HIT");
+        }
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -37,11 +41,15 @@ public class CollisionDetection : MonoBehaviour {
         }
     }
 
-    void OnTriggerEnter(Collider other) {
-        manager.OnControllerColliderHit(other.gameObject);
-    }
-    
-    
+    //private void OnTriggerEnter(Collider other)
+    //{
+    //    if (other.gameObject.tag == "LocationColliders")
+    //    {
+    //        Debug.Log("TRIGGER!!!!!!");
+    //    }
+    //}
+
+
     void Start ()
 	{		
 		GameObject experiment = GameObject.FindWithTag ("Experiment");
